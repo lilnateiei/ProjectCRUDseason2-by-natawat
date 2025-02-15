@@ -1,0 +1,192 @@
+body, html {
+     
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow: hidden;
+    
+    
+}
+
+video.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
+}
+
+
+h1 {
+    color: #333;
+}
+
+.btn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* สไตล์ Popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(10, 25, 89);
+    color: #ffffff;
+    padding: 40px;  
+    border-radius: 15px; 
+    text-align: center;
+    z-index: 9999;
+    width: 400px;  
+}
+
+.popup button {
+    margin-top: 20px;
+    background-color: #3cff00;
+    border-radius: 10px; 
+    width: 200px;
+    height: 40px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border: 1px solid #ccc; 
+    color: #ffffff;
+}
+
+.popup button:hover {
+    background-color: #0055ff;
+    border: none;
+}
+
+.popup button:active {
+    background-color: #053086;
+    border: none;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+ 
+.popup-game {
+    position: fixed;
+    display: none;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.284);
+    border: 2px solid rgb(226, 226, 226);
+    color: #ffffff;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 9999;
+    width: 500px;
+    height: 590px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .popup-game button {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    width: 160px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .game {
+    display: none;
+    margin-top: 20px;
+    color: black;
+  }
+
+  .game .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    color: black;
+    grid-gap: 10px;
+    justify-content: center;
+  }
+
+  .game .cell {
+    width: 100px;
+    height: 100px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .game .cell:hover {
+    
+    background-color: #e0e0e0;
+  }
+
+.closeGames {
+    display: none;
+    position: fixed; /* ยังคงติดกับมุมบนขวาของหน้าจอ */
+    top: 15%; /* ระยะจากด้านบน */
+    left: 65%; /* ระยะจากด้านซ้าย */
+    background-color: #ff0000;
+    color: white;
+    border-radius: 50px;
+    width: 50px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+     
+    z-index: 10000;
+
+  }
+
+.slide-in {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    animation: slideIn 1.5s ease-out;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="lofi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Add More Course</title>
+</head>
+<body class="flex flex-col justify-center items-center min-h-screen">
+    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"><a href="home.html"><i class="fa-solid fa-arrow-left">Back To Home</i></a></button>
+    <div class="wrapper bg-green-200 p-8 rounded-2xl shadow-md w-[600px] h-[650px]">
+        <h1 class="text-center text-2xl font-bold mb-6 text-white"><i class="fa-solid fa-book"></i>เพิ่มคอร์สภาษาที่คุณจะเรียน!</h1>
+ 
+        <div class="p-4 w-full flex justify-center">
+            <div class="relative w-96 max-w-full">
+                <input 
+                    type="text" 
+                    id="langue" 
+                    name="langue" 
+                    class="peer bg-white h-12 w-full rounded-xl text-gray-800  pb-3 placeholder:top-1/2 placeholder:-translate-y-1/2 ring-2 ring-gray-400 focus:ring-4 focus:ring-sky-500 focus:outline-none px-4 pt-4 pb-1 ring-offset-2 transition-all duration-300" 
+                    placeholder="กรอกภาษาที่คุณต้องการจะเรียน" 
+                />
+                <i class="fa-solid fa-code text-gray-500 text-2xl absolute right-4 top-2"></i>
+            </div>
+        </div>
+
+        <div class="p-4 w-full flex justify-center">
+            <div class="relative w-96 max-w-full">
+                <input 
+                    type="text" 
+                    id="hour" 
+                    name="hour" 
+                    class="peer bg-white h-12 w-full rounded-xl text-gray-800 pb-3  placeholder:top-1/2 placeholder:-translate-y-1/2 ring-2 ring-gray-400 focus:ring-4 focus:ring-sky-500 focus:outline-none px-4 pt-4 pb-1 ring-offset-2 transition-all duration-300" 
+                    placeholder="กรอกชั่วโมงของคอร์สที่เรียน" 
+                />
+                <i class="fa-solid fa-clock text-gray-500 text-2xl absolute right-4 top-2"></i>
+            </div>
+        </div>
+
+        <div class="p-4 w-full flex justify-center">
+            <div class="relative w-96 max-w-full">
+                <input 
+                    type="text" 
+                    id="des" 
+                    name="des" 
+                    class="peer bg-white h-12 w-full rounded-xl text-gray-800 pb-3  placeholder:top-1/2 placeholder:-translate-y-1/2 ring-2 ring-gray-400 focus:ring-4 focus:ring-sky-500 focus:outline-none px-4 pt-4 pb-1 ring-offset-2 transition-all duration-300" 
+                    placeholder="กรอกคำอธิบายรายวิชา" 
+                />
+                <i class="fa-regular fa-clipboard text-gray-500 text-2xl absolute right-4 top-2"></i>
+            </div>
+        </div>
+        <a href="course.html" class="text-center flex justify-center text-1xl font-bold mb-6 text-white">ไปที่หน้าหลัก</a>
+
+        <div class="text-center mt-4">
+            <button 
+                type="submit" 
+                id="Submit"
+                class="bg-blue-500 text-white text-lg px-10 py-3 rounded-lg hover:bg-sky-600 focus:outline-2 focus:outline-offset-2 focus:outline-sky-500 active:bg-sky-700 w-96"
+                onclick="submitData()"
+            >
+                ยืนยันการเพิ่มคอร์สเรียน!
+            </button>
+
+            <!-- popup -->
+            <div id="modelConfirm" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
+                <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
+                    <div class="flex justify-end p-2">
+                        <button onclick="closeModal('modelConfirm')" type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="p-6 pt-0 text-center">
+                        <div id="popupIcon"></div>
+                        <h3 id="popupMessage" class="text-xl font-normal text-gray-500 mt-5 mb-6">กรุณากรอกข้อมูลให้ครบ!</h3>
+                        <a href="#"  onclick="closeModal('modelConfirm')"
+                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                            ตกลง
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/script/crudll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+</html>
